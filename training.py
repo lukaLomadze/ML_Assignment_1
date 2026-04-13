@@ -26,7 +26,13 @@ def train_model(x,y,x_val,y_val, name,model, scoring):
 
         })
 
-        mlflow.sklearn.log_model(model, "model")
+        mlflow.sklearn.log_model(model, name ="model")
+        print("name : ", name)
+        print("cv_rmsle_mean: ", cv_rmsle_mean)
+        print("cv_rmsle_std: ", cv_rmsle_std)
+        print("train_rmsle: ", t_rmsle)
+        print("validation_rmsle: ", v_rmsle)
+
         return v_rmsle
 
 
