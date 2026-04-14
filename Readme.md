@@ -46,7 +46,7 @@ Train split-ზე დავთვალე missing rate. სვეტები,
 
 ## Feature Engineering
 
-### QualityEncoder — ორდინალური კოდირება
+### QualityEncoder 
 
 კონკრეტული სვეტები  ტექსტური მნიშვნელობებით (Ex/Gd/TA/Fa/Po/NA) — გადავიყვანე 5/4/3/2/1/0 სკალაზე. 
 
@@ -101,13 +101,22 @@ RFE-ს შემდეგ ავიღე ის წყვილები, ს�
 ### Ridge Regression — alpha ვარიაცია
 
 ```
-alpha=0.0001  → train_rmsle≈0.11, val_rmsle≈0.14  
-alpha=1       → train≈0.12, val≈0.13               
-alpha=100     → train≈0.13, val≈0.13               
-alpha=10000   → train≈0.18, val≈0.18               
+alpha=0.0001  → train_rmsle≈0.0089, val_rmsle≈0.0091  
+alpha=0.001      → train≈0.0089, val≈0.0091               
+alpha=0.01     → train≈0.0089, val≈0.0091              
+alpha=0.1   → train≈0.0089, val≈0.0091   
+alpha=1   → train≈0.0089, val≈0.0092   
+alpha=10   → train≈0.0090, val≈0.0093
+alpha=100   → train≈0.0091, val≈0.0099   
+alpha=1000   → train≈0.010, val≈0.011    
+alpha=10000   → train≈0.019, val≈0.021 
+alpha=100000   → train≈0.028, val≈0.03
+         
 ```
 
-Alpha=0,001-დან 100-მდე ოპტიმალური დიაპაზონია.
+
+
+Alpha=0,0001-დან 100-მდე ოპტიმალური დიაპაზონია.
 
 ### Decision Tree — depth ვარიაცია
 
@@ -140,8 +149,11 @@ Alpha=0,001-დან 100-მდე ოპტიმალური დიაპ�
 
 ## MLflow Tracking
 
-ექსპერიმენტები: [dagshub.com/lukaLomadze/ML_Assignment_1](https://dagshub.com/lukaLomadze/ML_Assignment_1)
+ექსპერიმენტები: [dagshub](https://dagshub.com/lukaLomadze/ML_Assignment_1)
+[mlflow](https://dagshub.com/lukaLomadze/ML_Assignment_1.mlflow/#/experiments/4/runs?searchFilter=&orderByKey=metrics.%60val_rmsle%60&orderByAsc=false&startTime=ALL&lifecycleFilter=Active&modelVersionFilter=All+Runs&datasetsFilter=W10%3D)
 
+პატარა შეცდომის გამო ასევე შეგიძლიათ იხილოთ ლოგები სხვა ექპერიმენტის სახელით [oldmlflow1](https://dagshub.com/lukaLomadze/ML_Assignment_1.mlflow/#/experiments/0/runs)
+[oldMlflow2](https://dagshub.com/lukaLomadze/ML_Assignment_1.mlflow/#/experiments/3/runs?searchFilter=&orderByKey=metrics.%60val_rmsle%60&orderByAsc=false&startTime=ALL&lifecycleFilter=Active&modelVersionFilter=All+Runs&datasetsFilter=W10%3D)
 ### ჩაწერილი მეტრიკები
 
 | მეტრიკა | აღწერა |
