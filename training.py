@@ -1,3 +1,5 @@
+import pickle
+
 import mlflow
 from sklearn.metrics import mean_squared_error
 from sklearn.model_selection import cross_val_score
@@ -36,7 +38,11 @@ def train_model(x,y,x_val,y_val, name,model, scoring):
 
         })
 
-        mlflow.sklearn.log_model(model, "model")
+        # mlflow.sklearn.log_model(model, "model")
+        with open("model.pkl", "wb") as f:
+            pickle.dump(model, f)
+        mlflow.log_artifact("model.pkl")
+
         print("name : ", name)
         print("cv_rmsle_mean: ", cv_rmsle_mean)
         print("cv_rmsle_std: ", cv_rmsle_std)
@@ -44,10 +50,4 @@ def train_model(x,y,x_val,y_val, name,model, scoring):
         print("validation_rmsle: ", v_rmsle)
 
         return v_rmsle
-
-
-
-
-
-
 
